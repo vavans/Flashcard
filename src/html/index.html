@@ -1,0 +1,61 @@
+<!doctype html>
+<title>Todo app</title>
+<script src="../../lib/js/mithril.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen,projection" href="../../lib/css/ez-min.css"></link>
+
+<style type="text/css">
+
+
+body {
+  background-color: #F2F074;
+}
+
+.card {
+  width:300px;
+  height:400px;
+  -webkit-border-radius: 22px;
+  -moz-border-radius: 22px;
+  border-radius: 22px;
+  border:5px solid #FFFFFF;
+  background-color:#009688;
+  -webkit-box-shadow: #B3B3B3 10px 10px 10px;
+  -moz-box-shadow: #B3B3B3 10px 10px 10px; 
+  box-shadow: #BDBB5B 10px 10px 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align : text-bottom;
+  display:table;
+  position:relative;
+}
+
+.centertricks {
+  display: table-cell; 
+  vertical-align: middle;
+}
+
+.cardcontent
+{
+  margin-left: auto; 
+  margin-right: auto; 
+  font-size:40px;
+  font-weight:bold;
+  font-family:trebuchet MS, sans-serif;
+  color: #FFFFFF;
+}
+</style>
+
+<script>
+  function flip(card) {
+    card.classList.toggle("");
+  }
+</script>
+
+<div>
+  <div class="card">
+    <div class="centertricks">
+      <div class="cardcontent">Flashcard</div>
+    </div>
+  </div>
+</div>
+
