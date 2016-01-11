@@ -1,61 +1,120 @@
 <!doctype html>
-<title>Todo app</title>
-<script src="../../lib/js/mithril.min.js"></script>
-<link rel="stylesheet" type="text/css" media="screen,projection" href="../../lib/css/ez-min.css"></link>
+<html>
+<head>
 
-<style type="text/css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
 
+  <title>Todo app</title>
+  <script src="../../lib/js/mithril.min.js"></script>
 
-body {
-  background-color: #F2F074;
-}
+  <style type="text/css">
+    body {
+      background-color: #F2F074;
+    }
 
-.card {
-  width:300px;
-  height:400px;
-  -webkit-border-radius: 22px;
-  -moz-border-radius: 22px;
-  border-radius: 22px;
-  border:5px solid #FFFFFF;
-  background-color:#009688;
-  -webkit-box-shadow: #B3B3B3 10px 10px 10px;
-  -moz-box-shadow: #B3B3B3 10px 10px 10px; 
-  box-shadow: #BDBB5B 10px 10px 10px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  vertical-align : text-bottom;
-  display:table;
-  position:relative;
-}
+    .card {
+      width:300px;
+      height:400px;-webkit-border-radius: 22px;-moz-border-radius: 22px;border-radius: 22px;
+      border:5px solid #FFFFFF;
+      background-color:#009688;
+      -webkit-box-shadow: #B3B3B3 10px 10px 10px;-moz-box-shadow: #B3B3B3 10px 10px 10px; box-shadow: #BDBB5B 10px 10px 10px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      vertical-align : text-bottom;
+      display:table;
+      position:relative;
+    }
 
-.centertricks {
-  display: table-cell; 
-  vertical-align: middle;
-}
+    .centertricks {
+      display: table-cell; 
+      vertical-align: middle;
+    }
 
-.cardcontent
-{
-  margin-left: auto; 
-  margin-right: auto; 
-  font-size:40px;
-  font-weight:bold;
-  font-family:trebuchet MS, sans-serif;
-  color: #FFFFFF;
-}
-</style>
+    .cardcontent
+    {
+      --background-color: green;  
+      margin-left: auto; 
+      margin-right: auto; 
+      font-size:40px;
+      font-weight:bold;
+      font-family:trebuchet MS, sans-serif;
+      color: #FFFFFF;
+    }
 
-<script>
-  function flip(card) {
-    card.classList.toggle("");
-  }
-</script>
+    .flipper {
+      transition: 0.5s;
+      transform-style: preserve-3d;
+      position : relative;
+    }
+
+    .flip {
+      transform: rotateY(180deg);
+    }
+
+    .flip-container {
+      margin-top:40px;
+      perspective: 1000;
+      width:310px;
+      height:400px; 
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .front, .back {
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .front {
+      z-index: 2;
+      /* for firefox 31 */
+      transform: rotateY(0deg);
+    }
+      
+    .back {
+      transform: rotateY(180deg);
+    }
+
+  </style>
+
+</head>
+
+<body>
 
 <div>
-  <div class="card">
-    <div class="centertricks">
-      <div class="cardcontent">Flashcard</div>
+  <div class="flip-container">
+    <div class="flipper">
+    <div class="front card">
+      <div class="centertricks">
+        <div class="cardcontent">René</div>
+      </div>
+    </div>
+    <div class="back card">
+      <div class="centertricks">
+        <div class="cardcontent">Verso</div>
+      </div>
     </div>
   </div>
 </div>
+</div>
 
+<script>
+  var clickHandler = function(block, isTouching, event) {
+    block.classList.toggle('flip');
+    if (isTouching) {
+      event.preventDefault();
+    }
+  };
+
+  var div = document.querySelector(".flipper");
+  div.addEventListener("click", clickHandler.bind(null, div, false), false);
+  div.addEventListener("touchstart", clickHandler.bind(null, div, true), false);
+</script>
+
+</body>
+</html>
