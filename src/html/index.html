@@ -28,15 +28,15 @@
     }
 
     .centertricks {
-      display: table-cell; 
+      display: table-cell;
       vertical-align: middle;
     }
 
     .cardcontent
     {
-      --background-color: green;  
-      margin-left: auto; 
-      margin-right: auto; 
+      --background-color: green;
+      margin-left: auto;
+      margin-right: auto;
       font-size:40px;
       font-weight:bold;
       font-family:trebuchet MS, sans-serif;
@@ -44,20 +44,26 @@
     }
 
     .flipper {
-      transition: 0.5s;
       transform-style: preserve-3d;
       position : relative;
     }
 
+    @keyframes mymove {
+        0%   {transform: translateZ(0px)}
+        30%  {transform: translateZ(190px) rotateZ(-2deg) rotateY(90deg) translateX(-400px)}
+        100% {transform: rotateY(179.9deg) rotateZ(5deg)}
+    }
+
     .flip {
-      transform: rotateY(180deg);
+      animation : mymove 0.7s;
+      animation-fill-mode: both;
     }
 
     .flip-container {
-      margin-top:40px;
-      perspective: 1000;
+      margin-top:80px;
+      perspective: 3500px;
       width:310px;
-      height:400px; 
+      height:400px;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
