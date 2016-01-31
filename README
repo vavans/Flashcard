@@ -1,0 +1,4 @@
+Flash card web application with :
+ - mithril.js as ui framework
+ - haskell as web server 
+ - mysql as database
