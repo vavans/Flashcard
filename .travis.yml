@@ -3,3 +3,6 @@ branches:
     - master
 
 language: haskell
+
+before_install:
+  - cd server
