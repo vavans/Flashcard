@@ -6,3 +6,8 @@ language: haskell
 
 before_install:
   - cd server
+  
+install:
+  - stack setup
+  
+script: stack build
