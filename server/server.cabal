@@ -26,6 +26,30 @@ executable server-exe
   build-depends:       base
                      , server
                      , mysql-simple
+                     , aeson
+                     , bytestring
+                     , directory
+                     , http-types
+                     , js-jquery
+                     , lucid
+                     , random
+                     , servant 
+                     , servant-docs 
+                     , servant-server
+                     , text
+                     , time
+                     , transformers
+                     , transformers-compat
+                     , wai
+                     , warp 
+                     , mtl
+                     , either
+                     , attoparsec
+                     , string-conversions
+                     , http-media
+                     , blaze-markup
+                     , blaze-html
+
   default-language:    Haskell2010
 
 test-suite server-test
