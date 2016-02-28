@@ -24,7 +24,6 @@
       text-align: center;
       vertical-align : text-bottom;
       display:table;
-      position:relative;
     }
 
     .centertricks {
@@ -45,17 +44,16 @@
 
     .flipper {
       transform-style: preserve-3d;
-      position : relative;
     }
 
     @keyframes mymove {
         0%   {transform: translateZ(0px)}
-        40%  {transform: translateZ(290px) rotateZ(-2deg) rotateY(90deg) translateX(-400px)}
-        100% {transform: rotateY(179.9deg) rotateZ(5deg)}
+        40%  {transform: translateZ(290px) rotateY(90deg) translateX(-400px)}
+        100% {transform: rotateY(179.9deg) }
     }
 
     .flip {
-      animation : mymove 2.6s;
+      animation : mymove 0.6s;
       animation-fill-mode: both;
     }
 
@@ -63,7 +61,7 @@
       margin-top:80px;
       perspective: 3500px;
       width:310px;
-      height:400px;
+      height:420px;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
@@ -81,12 +79,50 @@
       /* for firefox 31 */
       transform: rotateY(0deg);
     }
-      
+
     .back {
       transform: rotateY(180deg);
       background-color:grey;
     }
 
+    .buttons {
+      width:280px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .button {
+      margin:10px;
+      display:inline-block;
+      -webkit-border-radius: 10;
+      -moz-border-radius: 10;
+      border-radius: 10px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 22px;
+      padding: 10px 20px 10px 20px;
+      text-decoration: none;
+      width: 40px;
+    }
+
+    .btn-ok {
+      background: #009688;
+    }
+
+    .btn-ok:hover {
+      background: #1fb955;
+      text-decoration: none;
+    }
+
+    .btn-nok {
+      background-color: grey;
+    }
+
+    .btn-nok:hover {
+      background: #e84870;
+      text-decoration: none;
+    }
   </style>
 
 </head>
@@ -96,18 +132,26 @@
 <div>
   <div class="flip-container">
     <div class="flipper">
-    <div class="front card">
-      <div class="centertricks">
-        <div class="cardcontent">René</div>
+      <div class="front card">
+        <div class="centertricks">
+          <div class="cardcontent">René</div>
+        </div>
       </div>
-    </div>
-    <div class="back card">
-      <div class="centertricks">
-        <div class="cardcontent">Verso</div>
+      <div class="back card">
+        <div class="centertricks">
+          <div class="cardcontent">Verso</div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="buttons">
+    <div class="button btn-nok">
+      NOk
+    </div>
+    <div class="button btn-ok">
+      Ok
+    </div>
+  </div>
 </div>
 
 <script>
