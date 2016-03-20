@@ -57,7 +57,7 @@ install:
 - |
   case "$BUILD" in
     stack)
-      stack --no-terminal --install-ghc $ARGS --only-dependencies
+      stack --no-terminal --install-ghc $ARGS
       ;;
     cabal)
       ;;
