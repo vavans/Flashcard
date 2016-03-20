@@ -8,7 +8,6 @@
 module Database where
 
 import Prelude hiding (sum)
-
 import Opaleye (Column, Nullable, matchNullable, isNull,
                Table(Table), required, queryTable,
                Query, QueryArr, restrict, (.==), (.<=), (.&&), (.<),
@@ -22,10 +21,9 @@ import Data.Profunctor.Product.Default (Default)
 import Data.Profunctor.Product.TH (makeAdaptorAndInstance)
 import Data.Time.Calendar (Day)
 import Control.Arrow (returnA, (<<<))
-import           Data.Aeson
-import           Data.Time.Calendar
-import           GHC.Generics
-
+import Data.Aeson
+import Data.Time.Calendar
+import GHC.Generics
 import qualified Database.PostgreSQL.Simple as PGS
 
 --types
@@ -35,17 +33,13 @@ type Card = Card' Int String String Int
 type CardColumn = Card' (Column PGInt4) (Column PGText) (Column PGText) (Column PGInt4)
 $(makeAdaptorAndInstance "pCard" ''Card')
 
---cardTable :: Table ( Column PGInt4, Column PGText, Column PGText, Column PGInt4 )
---                   ( Column PGInt4, Column PGText, Column PGText, Column PGInt4 )
---cardTable = Table "Card" (p4 (required "idcard", required "question", required "answer", required "iddeck" ))
 cardTable :: Table CardColumn CardColumn
 cardTable = Table "Card"
                   (pCard Card' { idcard = required "idcard", question = required "question", answer = required "answer", iddeck = required "iddeck"} )
 
-
 select :: Query CardColumn
 select = queryTable cardTable
-
+--
 runSelectQuery :: IO [Card]
 runSelectQuery =
   do
