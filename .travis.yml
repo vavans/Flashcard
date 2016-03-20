@@ -57,7 +57,7 @@ install:
 - |
   case "$BUILD" in
     stack)
-      stack --no-terminal --install-ghc $ARGS
+      stack --no-terminal --install-ghc $ARGS build
       ;;
     cabal)
       ;;
@@ -67,7 +67,7 @@ script:
 - |
   case "$BUILD" in
     stack)
-      stack --no-terminal $ARGS
+      stack --no-terminal $ARGS build
       ;;
     cabal)
       ;;
